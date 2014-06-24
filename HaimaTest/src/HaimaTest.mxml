@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" applicationDPI="160" creationComplete="application1_creationCompleteHandler(event)">
+	
+	<fx:Script>
+		<![CDATA[
+			import me.haima.ane.HaimaExtension;
+			
+			import mx.events.FlexEvent;
+			protected function button1_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				HaimaExtension.getInstance().init(appkey.text, appid.text);
+			}
+			
+			protected function button2_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				HaimaExtension.getInstance().login();
+			}
+			
+			protected function button3_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				HaimaExtension.getInstance().pay("1234", 7, null, 1, null);
+			}
+			
+			protected function application1_creationCompleteHandler(event:FlexEvent):void
+			{
+				// TODO Auto-generated method stub
+				HaimaExtension.getInstance().addEventListener(StatusEvent.STATUS, onS);
+			}
+			
+			protected function onS(e:StatusEvent):void
+			{
+				txt.appendText( "[" + e.code + "]" + e.level + "\n");
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+	</fx:Declarations>
+	<s:TextInput id="appkey" x="10" y="10"
+				 text="NEVDMkQ3OTRBMTY4ODIzMzkwRUI5MkMzQTQyRTU4NTYwMzJDMjU2OE1UY3lNalkxTWprd01UYzVPVE14TkRNek9Ea3JNVEF5TURjeU1qZzRNVEkzTVRZME9EYzBNalV5TmpnMk1UZ3dOVEV3TmpnME5UVTFNRGt4"/>
+	<s:TextInput id="appid" x="10" y="51" text="10000100000040100001"/>
+	<s:Button x="10" y="92" width="300" label="register" click="button1_clickHandler(event)"/>
+	<s:Button x="10" y="143" width="300" label="login" click="button2_clickHandler(event)"/>
+	<s:Button x="10" y="194" width="300" label="支付一分钱" click="button3_clickHandler(event)"/>
+	<s:TextArea id="txt" x="10" y="245" height="205"/>
+</s:Application>

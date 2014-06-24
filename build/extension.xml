@@ -1,0 +1,23 @@
+<extension xmlns="http://ns.adobe.com/air/extension/4.0">
+  <id>me.haima.extension</id>
+  <versionNumber>1</versionNumber>
+  <platforms>
+    <platform name="iPhone-ARM">
+        <applicationDeployment>
+            <nativeLibrary>libHaimaPayment.a</nativeLibrary>
+            <initializer>HaimaPaymentExtInitializer</initializer>
+            <finalizer>HaimaPaymentExtFinalizer</finalizer>
+        </applicationDeployment>
+    </platform>
+    <platform name="iPhone-x86">
+        <applicationDeployment>
+            <nativeLibrary>libHaimaPayment.a</nativeLibrary>
+            <initializer>HaimaPaymentExtInitializer</initializer>
+            <finalizer>HaimaPaymentExtFinalizer</finalizer>
+        </applicationDeployment>
+    </platform>
+    <platform name="default"> 
+        <applicationDeployment/> 
+    </platform> 
+  </platforms>
+</extension>
